@@ -1,0 +1,56 @@
+<?php
+
+if(!isset($_SESSION["status"]) ){
+echo'
+<form action="controller/redefine.php" method="POST" >
+  <div class="form-group">
+    <label for="exampleInputEmail1">Digite a senha atual</label>
+    <input type="password" class="form-control"  placeholder="Senha atual" name="senha_atual" required>
+  </div>
+
+  
+
+   <button type="submit" class="btn btn-info " name="verificar">
+    <i class="glyphicon glyphicon-plus"></i>
+   Verificar
+  </button>
+
+';
+
+}else if(isset($_SESSION["status"]) && $_SESSION["status"] == "senha_ok"){
+  
+echo '<form action="controller/redefine.php" method="POST" >
+  <div class="form-group">
+    <label for="exampleInputEmail1">Digite a nova senha </label>
+    <input type="password" class="form-control"  placeholder="Digite a nova senha" name="senha_atual" required>
+  </div>
+
+  
+
+   <button type="submit" class="btn btn-info " name="verificar">
+    <i class="glyphicon glyphicon-plus"></i>
+   Atualizar
+  </button>';
+
+}else if(isset($_SESSION["status"]) && $_SESSION["status"] == "senha_error"){
+unset( $_SESSION['status'] ); 
+
+echo'
+<form action="controller/redefine.php" method="POST" >
+  <div class="form-group">
+    <label for="exampleInputEmail1">Digite a senha atual</label>
+    <input type="password" class="form-control"  placeholder="Senha atual" name="senha_atual" required>
+  </div>
+
+  
+
+   <button type="submit" class="btn btn-info " name="verificar">
+    <i class="glyphicon glyphicon-plus"></i>
+   Verificar
+  </button>
+  <form/>
+<hr/>';
+echo 'Senha digitada errada, por favor digite novamente';
+
+}
+?>

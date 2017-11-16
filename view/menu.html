@@ -1,0 +1,60 @@
+<?php
+echo '<ul class="nav nav-pills nav-stacked">';	
+			
+            //butao adicionar 
+			echo '<hr/>';
+			echo '<li><a  href="?option=add_product">';
+			echo '<span class="glyphicon glyphicon-plus"></span>';
+			echo ' Adicionar Produto </a></li>';
+            //--------
+            
+            //butao listar
+            echo '<hr/>';
+			echo '<li><a href="?option=list_products">';
+			echo '<span class="glyphicon glyphicon-list"></span>';
+			echo ' Listar Produtos </a></li>';
+            //--------
+            
+
+
+            //butao mensagens
+			echo '<hr/>'; 
+			echo '<li><a href="?option=mens">';
+			echo '<span class="fa fa-comment-o"></span>';
+			echo ' Mensagens </a></li>';
+            //--------
+
+            //butao configurações
+            echo '<hr/>'; 
+            echo '<div class="btn-group">
+                   <button type="button" class="btn btn-primary">Configurações</button>
+                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <span class="caret"></span>
+                     <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                     <li><a href="?option=name">Nome da loja</a></li>
+    				 <li><a href="?option=contacts">Contatos</a></li>
+                     <li><a href="?option=color">Cor </a></li>
+                     <li><a href="?option=sociais">Redes Sociais</a></li>
+                     <li><a href="?option=make_cat">Criar Categoria</a></li>
+                     <li><a href="?option=carou">Carousel</a></li>
+                     <li><a href="?option=about">Sobre</a></li> 
+                     <li><a href="?option=password">Modificar senha</a></li> 
+    				 
+                    </ul>
+                  </div>';
+			//--------
+			
+
+			//butao sair
+			echo '<hr/>'; 
+			echo '<li><a href="controller/sair.php">';
+			echo '<span class="glyphicon glyphicon-off"></span>';
+			echo ' Sair  </a></li>';
+            //--------
+
+
+		echo "</ul>";
+
+?>		

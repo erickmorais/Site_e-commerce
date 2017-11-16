@@ -1,0 +1,177 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"></script>
+
+
+
+<script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<?php
+	/**
+	*	@author: Erick Morais;
+	*	@package: /view/list_common.php
+	*
+	* 	Este arquivo controla a criação e a 
+	*   visualização de dados
+	* 	em uma tabela. 
+	*
+	***/
+
+
+	//Testar se existe conteúdo!
+	#Se não existir, ele mostra a label 
+	if($table_content == false){
+		echo '<span class="label label-warning">';
+			 echo ' Não existem resultados';
+		echo '</span><br><br>';
+		#se existir conteúdo, ele cria a tabela
+	}else{
+?>
+
+
+<script >
+	$(document).ready(function() {
+    $('#tableGeral').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
+        }
+    } );
+} );
+
+
+
+
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#tableGeral').DataTable();
+    });
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+
+	//função para guardar o id no filtro
+	function delete_reg(filter){
+		$('#value').val(filter);
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- modal para excluir -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModal">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Excluir?</h4>
+      </div>
+
+      <div class="modal-body">
+      		<form action="<?php echo $delete_destiny;?>" method="POST">
+      			<input type="hidden" name="filter" id="value">
+      			<button type="" class="btn btn-danger">
+      				<span class="glyphicon glyphicon-ok-sign"></span>
+      				Sim, Excluir.	
+      			</button>
+
+      			<button type="button" class="btn btn-default" data-dismiss="modal" aria-lavel="Close">
+      				<span class="glyphicon glyphicon-remove-sign"></span>
+      				Não, Cancelar.
+      			</button>
+
+      		<form/>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- fim modal -->
+
+
+
+
+
+
+<table class="table table-hover table-striped table-responsive" id="tableGeral" >
+	<thead>
+	<?php
+		//Imprimindo os títulos
+		echo '<tr>';
+			foreach ($table_titles as $key => $value) {
+				echo '<th>',$value,'</th>';
+			}
+	?>
+			<th> Ações </th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<?php
+			foreach ($table_content as $key => $value) {
+				echo '<tr>';
+				foreach ($table_titles as $k => $v) {
+					echo '<td>',$value[$k],'</td>';
+				}
+				
+					echo '<td>';
+					if(isset($update) && $update == true){
+						echo '<a href="'.$update_destiny.'&filter='.$value[$filter].'" class="btn btn-warning btn-xs">';
+							echo '<span class="glyphicon glyphicon-pencil"></span>';
+							echo'Atualizar';
+						echo '</a>'; 
+
+					}
+
+					if(isset($delete) && $delete == true){
+						echo '<a href="#myModal" class="btn btn-danger btn-xs" data-toggle="modal" id="tooltip" onclick="delete_reg(\'',$value[$filter],'\');">';
+							echo '<span class="glyphicon glyphicon-trash"></span>';
+							echo'Excluir';
+					
+						echo '</a>'; 
+                       
+					}
+
+				
+					if(isset($carousel) && $carousel == true){
+						
+						echo '<a href="'.$carou_destinyadd.'?filter='.$value[$filter].'&action=add" class="btn btn-warning btn-xs">';
+							echo '<span class="glyphicon glyphicon-plus"></span>';
+						echo 'ADCIONAR IMAGEM </a>'; 
+
+						echo '<a href="'.$carou_destinydel.'?filter='.$value[$filter].'&action=del" class="btn btn-danger btn-xs">';
+							echo '<span class="glyphicon glyphicon-remove"></span>';
+						echo 'DELETAR IMAGEM</a>'; 
+
+
+					}
+
+					echo '</td>';
+				echo '</tr>';
+
+			}
+		?>
+	</tbody>
+</table>
+
+
+
+
+<?php } ?>

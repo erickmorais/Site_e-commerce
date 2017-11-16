@@ -1,0 +1,56 @@
+<?php
+include_once 'model/manager.php';
+$cats = select_common('tb_cat',null,null,null); 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<form action="controller/add_product.php" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nome do Produto:</label>
+    <input type="text" class="form-control"  placeholder="Nome do Produto" name="product_name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Descrição:</label>
+    <input type="text" class="form-control" placeholder="Descrição do Produto" name="product_desc" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">Preço:</label>
+    <input type="number" class="form-control" placeholder="Preço de Venda" name="product_price" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Categoria</label>
+    <select  class="form-control" name="product_cat">
+      <option selected disabled> 
+        -- Selecione Uma Categoria --  
+      </option>
+       
+        <?php
+            foreach ($cats as $value) {
+             echo '<option value="',$value['cat_id'],'">',$value['cat_name'],"</option>";
+            }
+        ?>
+   
+    </select>
+  </div>
+
+   <div class="form-group">
+    <label for="exampleInputPassword1">Adicionar Imagem</label>
+    <input type="file" class="form-control"  name="file" required>
+  </div>
+
+  <button type="submit" class="btn btn-info btn-block">
+    <i class="glyphicon glyphicon-plus"></i>
+    Adicionar Produto
+  </button>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+     
+
+</head>
+
+<body>
+  <!-- Botoes para escolher as redes sociais -->
+
+  <form action="#" method="POST">
+ 
+    <button type="submit" class="btn btn-info" name="facebook">
+      <i class="fa fa-facebook-square" aria-hidden="true" >
+      </i>
+      Facebook
+    </button>
+
+   <button type="submit" class="btn btn-info" name="twitter">
+     <i class="fa fa-twitter" aria-hidden="true" >
+     </i>
+     twitter
+   </button>
+   
+   <button type="submit" class="btn btn-info" name="instagram">
+     <i class="fa fa-instagram" aria-hidden="true">
+     </i>
+     instagram
+   </button>                
+
+</form>
+
+ 
+  <hr>	
+ 
+
+
+
+</body>
+</html>
+
+<?php
+// Se o botao clicado for o do facebook, ele mostra o formulario para inserir o endereço do mesmo
+
+if(isset($_POST['facebook'])){
+	echo '<form action="controller/redes_sociais.php" method="POST">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Link</label>
+            <input type="text" class="form-control" name="social_link" placeholder="digite aqui o endereço do facebook">
+          </div>
+  
+           <INPUT TYPE="hidden" NAME="rede" VALUE="face">
+
+          <button type="submit" class="btn btn-default" >
+            <i class="fa fa-facebook-square" aria-hidden="true">
+            </i>
+             Confirmar
+          </button> 
+         </form>';
+
+} else if(isset($_POST['twitter'])){
+
+// Se o botao clicado for o do twitter, ele mostra o formulario para inserir o endereço do mesmo
+
+echo '<form action="controller/redes_sociais.php" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Link</label>
+          <input type="text" class="form-control" name="social_link" placeholder="digite aqui o endereço do twitter">
+        </div>
+
+         <INPUT TYPE="hidden" NAME="rede" VALUE="twit">
+          
+          <button type="submit" class="btn btn-default" >
+            <i class="fa fa-twitter" aria-hidden="true">
+            </i>
+            Confirmar
+          </button> 
+      </form>';
+
+
+}else if(isset($_POST['instagram'])){
+
+// Se o botao clicado for o do instagram, ele mostra o formulario para inserir o endereço do mesmo
+	
+  echo '<form action="controller/redes_sociais.php" method="POST">
+          <div class="form-group">
+             <label for="exampleInputEmail1">Link</label>
+              <input type="text" class="form-control" name="social_link" placeholder="digite aqui o endereço do instagram">
+          </div>
+            
+            <INPUT TYPE="hidden" NAME="rede" VALUE="inst">
+
+            <button type="submit" class="btn btn-default" >
+             <i class="fa fa-instagram" aria-hidden="true">
+             </i>
+              Confirmar
+            </button>   
+        
+        </form>';
+
+}
+
+
+
+
+
+
+
+?>
+<hr>  
